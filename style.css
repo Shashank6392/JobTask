@@ -10,11 +10,19 @@ body {
   color: #333;
 }
 
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+
 header {
   background-color: #f8f8f8;
   padding: 20px 40px;
   border-bottom: 1px solid #ddd;
   border-radius: 8px;
+  margin-left: 38px;
+  margin-right: 38px;
 }
 .top-bar {
   display: flex;
@@ -55,7 +63,29 @@ header {
 
 .language-dropdown {
   margin-left: 20px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 10px;
 }
+
+.language-dropdown .globe-icon {
+  margin-right: 5px;
+}
+
+.language-dropdown select {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1em;
+}
+
+.language-dropdown select:focus {
+  outline: none;
+}
+
 
 .dark-mode-toggle {
   display: flex;
@@ -67,11 +97,34 @@ header {
   margin-right: 5px;
 }
 
+.dark-mode-toggle .switch {
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.dark-mode-toggle .toggle-text {
+  margin-left: 10px;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.switch .slider.round {
+  border-radius: 34px;
+}
+
+.switch .slider.round:before {
+  border-radius: 50%;
+}
+
 .switch {
   position: relative;
   display: inline-block;
   width: 34px;
   height: 20px;
+  margin-left: 0 5px;
 }
 
 .switch input {
@@ -110,12 +163,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(14px);
-}
-
-.dark-mode-toggle {
-  display: flex;
-  align-items: center;
-  gap: 5px;
 }
 
 .product-range-nav {
@@ -204,8 +251,8 @@ main {
   margin-bottom: 40px;
   background-color: #f0f0f0;
   padding: 40px;
-  margin-bottom: 40px;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .licenses p {
@@ -222,9 +269,14 @@ main {
 }
 
 .license-logos img {
-  margin: 0 20px;
-  height: 40px;
-  filter: grayscale(100%);
+  height: 60px; 
+  max-width: 100%; 
+  object-fit: contain; 
+  transition: transform 0.3s;
+}
+
+.license-logos img:hover {
+  transform: scale(1.1); 
 }
 
 .product-range {
@@ -262,6 +314,8 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
 }
 
 .category {
@@ -318,15 +372,16 @@ main {
   }
 
   .product-range {
-    flex-direction: column;
+    margin: 0;
     align-items: center;
   }
 
   .product-range button {
-    position: relative;
-    right: auto;
-    top: auto;
+    position: static;
     margin-top: 10px;
+  }
+  .license-logos img {
+    height: 50px;
   }
 }
 
@@ -347,5 +402,9 @@ main {
   .category {
     max-width: 100%;
     flex: 1 1 100%;
+  }
+
+  .license-logos img {
+    height: 40px;
   }
 }
